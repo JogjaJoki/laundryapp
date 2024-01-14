@@ -18,12 +18,13 @@ class LayananController extends Controller
     public function add(){
         $prefix = "LYN00";
         
+        $layanan = Layanan::all();
         $jenis = Jenis::all();
         
         // Mendapatkan nomor urut terakhir
         $lastNumber = 0;
     
-        foreach ($jenis as $j) {
+        foreach ($layanan as $j) {
             $number = intval(substr($j->kode, strlen($prefix)));
             $lastNumber = max($lastNumber, $number);
         }
@@ -34,39 +35,47 @@ class LayananController extends Controller
         // Membuat kode dengan nomor urut baru
         $kode = $prefix . str_pad($nextNumber, 2, '0', STR_PAD_LEFT);
 
-        return view('admin.jenis.add', compact(['kode']));
+        return view('admin.layanan.add', compact(['kode', 'jenis']));
     }
 
     public function create(Request $req){
-        $jenis = new Jenis;
+        $layanan = new Layanan;
 
-        $jenis->kode = $req->kode;
-        $jenis->nama = $req->nama;
+        $layanan->kode = $req->kode;
+        $layanan->kode_jenis = $req->kode_jenis;
+        $layanan->estimasi = $req->estimasi;
+        $layanan->nama = $req->nama;
+        $layanan->harga = $req->harga;
 
-        $jenis->save();
+        $layanan->save();
 
-        return redirect()->route('admin.jenis.index');
+        return redirect()->route('admin.layanan.index');
     }
 
     public function edit($id){
-        $jenis = Jenis::findOrFail($id);
+        $layanan = Layanan::findOrFail($id);
+        $jenis = Jenis::all();
 
-        return view('admin.jenis.edit', compact(['jenis']));
+        return view('admin.layanan.edit', compact(['layanan', 'jenis']));
     }
 
     public function update(Request $req){
-        $jenis = Jenis::findOrFail($req->kode);
+        $layanan = Layanan::findOrFail($req->kode);
 
-        $jenis->nama = $req->nama;
+        $layanan->kode = $req->kode;
+        $layanan->kode_jenis = $req->kode;
+        $layanan->estimasi = $req->estimasi;
+        $layanan->nama = $req->nama;
+        $layanan->harga = $req->harga;
 
-        $jenis->save();
+        $layanan->save();
 
-        return redirect()->route('admin.jenis.index');
+        return redirect()->route('admin.layanan.index');
     }
 
     public function delete($id){
-        Jenis::destroy($id);
+        Layanan::destroy($id);
 
-        return redirect()->route('admin.jenis.index');
+        return redirect()->route('admin.layanan.index');
     }
 }

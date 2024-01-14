@@ -26,6 +26,6 @@ class Layanan extends Model
     }
 
     public function pesanan(){
-        return $this->belongsToMany(Pesanan::class, 'layanan_pesanan', 'kode_layanan', 'kode_pesanan');
+        return $this->belongsToMany(Pesanan::class, 'layanan_pesanan', 'kode_layanan', 'kode_pesanan')->withPivot('jumlah', 'subtotal', 'created_at', 'updated_at');
     }
 }

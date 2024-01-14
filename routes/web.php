@@ -41,7 +41,15 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/pesanan', [App\Http\Controllers\Admin\PesananController::class, 'index'])->name('admin.pesanan.index');
     Route::get('/add-pesanan', [App\Http\Controllers\Admin\PesananController::class, 'add'])->name('admin.pesanan.add');
     Route::post('/create-pesanan', [App\Http\Controllers\Admin\PesananController::class, 'create'])->name('admin.pesanan.create');
+    Route::get('/view-pesanan/{kode}', [App\Http\Controllers\Admin\PesananController::class, 'view'])->name('admin.pesanan.view');
     Route::get('/edit-pesanan/{kode}', [App\Http\Controllers\Admin\PesananController::class, 'edit'])->name('admin.pesanan.edit');
     Route::post('/update-pesanan', [App\Http\Controllers\Admin\PesananController::class, 'update'])->name('admin.pesanan.update');
     Route::get('/delete-pesanan/{kode}', [App\Http\Controllers\Admin\PesananController::class, 'delete'])->name('admin.pesanan.delete');
+
+    Route::get('/pembayaran', [App\Http\Controllers\Admin\PembayaranController::class, 'index'])->name('admin.pembayaran.index');
+    Route::get('/add-pembayaran', [App\Http\Controllers\Admin\PembayaranController::class, 'add'])->name('admin.pembayaran.add');
+    Route::post('/create-pembayaran', [App\Http\Controllers\Admin\PembayaranController::class, 'create'])->name('admin.pembayaran.create');
+    Route::get('/edit-pembayaran/{kode}', [App\Http\Controllers\Admin\PembayaranController::class, 'edit'])->name('admin.pembayaran.edit');
+    Route::post('/update-pembayaran', [App\Http\Controllers\Admin\PembayaranController::class, 'update'])->name('admin.pembayaran.update');
+    Route::get('/delete-pembayaran/{kode}', [App\Http\Controllers\Admin\PembayaranController::class, 'delete'])->name('admin.pembayaran.delete');
 });

@@ -16,11 +16,16 @@ class CreatePesanansTable extends Migration
         Schema::create('pesanans', function (Blueprint $table) {
             $table->string('kode', 32)->primary()->index();
             $table->unsignedBigInteger('kasir_id');
-            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('pelanggan_id');
+            $table->double('total');
+            $table->double('longitude')->nullable();
+            $table->double('latitude')->nullable();
+            $table->enum('status', ['penjemputan', 'proses', 'pengiriman', 'selesai', 'batal']);
+            $table->boolean('isTemp')->default(false);
             $table->timestamps();
 
             $table->foreign('kasir_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('pelanggan_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

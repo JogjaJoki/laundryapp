@@ -151,7 +151,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#"
+                                <a href="{{ route('admin.layanan.index') }}"
                                     class="nav-link">
                                     <i class="nav-icon fas fa-database"></i>
                                     <p>
@@ -163,7 +163,7 @@
 
                             <li class="nav-header">MASTER ORDER </li>
                             <li class="nav-item">
-                                <a href="#"
+                                <a href="{{ route('admin.pesanan.index') }}"
                                     class="nav-link">
                                     <i class="nav-icon fas fa-diagnoses"></i>
                                     <p>
@@ -172,7 +172,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#"
+                                <a href="{{ route('admin.pembayaran.index') }}"
                                     class="nav-link">
                                     <i class="nav-icon fas fa-diagnoses"></i>
                                     <p>
@@ -185,7 +185,7 @@
                             <li class="nav-item">
                                 <a href="#"
                                     class="nav-link">
-                                    <i class="nav-icon fas fa-key"></i>
+                                    <i class="nav-icon fas fa-user"></i>
                                     <p>
                                         Customer
                                         {{-- <span class="badge badge-info right">2</span> --}}
@@ -212,13 +212,15 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <div class="content-header">
+            <!-- <div class="content-header">
                 <div class="container-fluid">
-                </div><!-- /.container-fluid -->
-            </div>
+                </div>
+            </div> -->
             <!-- /.content-header -->
 
-            @yield('content')
+            <div class="p-2">
+                @yield('content')
+            </div>
         </div>
         <!-- /.content-wrapper -->
 
@@ -289,7 +291,6 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,
@@ -300,6 +301,13 @@
                 "autoWidth": false,
                 "responsive": true,
             });
+            $("#pelanggan").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "searching": true,
+                "pageLength": 1
+            }).buttons().container().appendTo('#pelanggan_wrapper .col-md-6:eq(0)');
         });
     </script>
 </body>

@@ -12,7 +12,12 @@ class Pesanan extends Model
     protected $fillable = [
         'kode',
         'kasir_id',
-        'customer_id',
+        'pelanggan_id',
+        'longitude',
+        'latitude',
+        'total',
+        'status',
+        'isTemp'
     ];
 
     public $incrementing = false;
@@ -23,11 +28,15 @@ class Pesanan extends Model
         return $this->belongsTo(User::class, 'kasir_id');
     }
 
-    public function customer(){
-        return $this->belongsTo(User::class, 'customer_id');
+    public function pelanggan(){
+        return $this->belongsTo(User::class, 'pelanggan_id');
     }
 
     public function layanan(){
-        return $this->belongsToMany(Layanan::class, 'layanan_pesanan', 'kode_pesanan', 'kode_layanan');
+        return $this->belongsToMany(Layanan::class, 'layanan_pesanan', 'kode_pesanan', 'kode_layanan')->withPivot('jumlah', 'subtotal', 'created_at', 'updated_at');
+    }
+
+    public function pembayaran(){
+        return $this->hasOne(Pembayaran::class, 'kode_pesanan');
     }
 }

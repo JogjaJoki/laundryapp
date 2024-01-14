@@ -15,7 +15,7 @@ class JenisController extends Controller
     }
 
     public function add(){
-        $prefix = "LYN00";
+        $prefix = "JNLYN00";
         
         $jenis = Jenis::all();
         

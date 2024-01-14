@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 @section('content')
     <div class="container-fluid my-3" style="padding-left: 1%;">
-        <a href="{{ route('admin.guru.add') }}" class="btn btn-primary">Tambah Data</a>
+        <a href="{{ route('admin.layanan.add') }}" class="btn btn-primary">Tambah Data</a>
     </div>
     <br>
 
@@ -22,7 +22,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Data Guru</h3>
+                            <h3 class="card-title">Data Layanan Laundry</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -30,23 +30,27 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>NIP</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
+                                        <th>Kode Layanan</th>
+                                        <th>Jenis Layanan</th>
+                                        <th>Nama Layanan</th>
+                                        <th>Estimasi</th>
+                                        <th>Harga</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($guru as $index => $row)
+                                    @foreach ($layanan as $index => $row)
                                         <tr>
                                             <td>{{ ++$index }}</td>
-                                            <td class="nipRow">{{ $row->NIP }}</td>
-                                            <td class="nameRow">{{ $row->name }}</td>
-                                            <td>{{ $row->email }}</td>
+                                            <td class="nipRow">{{ $row->kode }}</td>
+                                            <td class="nameRow">{{ $row->jenis->nama }}</td>
+                                            <td class="nameRow">{{ $row->nama }}</td>
+                                            <td class="nameRow">{{ $row->estimasi }} Hari</td>
+                                            <td class="nameRow">{{ $row->harga }}</td>
                                             <td>
-                                                <a href="{{ route('admin.guru.edit', ['id' => $row->NIP]) }}"
+                                                <a href="{{ route('admin.layanan.edit', ['kode' => $row->kode]) }}"
                                                     class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                                <a href="{{ route('admin.guru.delete', ['id' => $row->NIP]) }}"
+                                                <a href="{{ route('admin.layanan.delete', ['kode' => $row->kode]) }}"
                                                     onclick="return confirm('Are you sure?'); return false;"
                                                     class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                             </td>
