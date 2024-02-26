@@ -31,6 +31,20 @@ Route::group(['middleware' => ['auth']], function (){
     Route::post('/update-jenis', [App\Http\Controllers\Admin\JenisController::class, 'update'])->name('admin.jenis.update');
     Route::get('/delete-jenis/{kode}', [App\Http\Controllers\Admin\JenisController::class, 'delete'])->name('admin.jenis.delete');
 
+    Route::get('/customer', [App\Http\Controllers\Admin\CustomerController::class, 'index'])->name('admin.customer.index');
+    Route::get('/add-customer', [App\Http\Controllers\Admin\CustomerController::class, 'add'])->name('admin.customer.add');
+    Route::post('/create-customer', [App\Http\Controllers\Admin\CustomerController::class, 'create'])->name('admin.customer.create');
+    Route::get('/edit-customer/{id}', [App\Http\Controllers\Admin\CustomerController::class, 'edit'])->name('admin.customer.edit');
+    Route::post('/update-customer', [App\Http\Controllers\Admin\CustomerController::class, 'update'])->name('admin.customer.update');
+    Route::get('/delete-customer/{id}', [App\Http\Controllers\Admin\CustomerController::class, 'delete'])->name('admin.customer.delete');
+
+    Route::get('/pegawai', [App\Http\Controllers\Admin\PegawaiController::class, 'index'])->name('admin.pegawai.index');
+    Route::get('/add-pegawai', [App\Http\Controllers\Admin\PegawaiController::class, 'add'])->name('admin.pegawai.add');
+    Route::post('/create-pegawai', [App\Http\Controllers\Admin\PegawaiController::class, 'create'])->name('admin.pegawai.create');
+    Route::get('/edit-pegawai/{id}', [App\Http\Controllers\Admin\PegawaiController::class, 'edit'])->name('admin.pegawai.edit');
+    Route::post('/update-pegawai', [App\Http\Controllers\Admin\PegawaiController::class, 'update'])->name('admin.pegawai.update');
+    Route::get('/delete-pegawai/{id}', [App\Http\Controllers\Admin\PegawaiController::class, 'delete'])->name('admin.pegawai.delete');
+
     Route::get('/layanan', [App\Http\Controllers\Admin\LayananController::class, 'index'])->name('admin.layanan.index');
     Route::get('/add-layanan', [App\Http\Controllers\Admin\LayananController::class, 'add'])->name('admin.layanan.add');
     Route::post('/create-layanan', [App\Http\Controllers\Admin\LayananController::class, 'create'])->name('admin.layanan.create');

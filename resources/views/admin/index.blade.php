@@ -10,9 +10,9 @@
                         <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Total Guru</span>
+                            <span class="info-box-text">Total Customer</span>
                             <span class="info-box-number">
-                                {{ 14 }}
+                                {{ $customer->count() }}
                             </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -25,8 +25,8 @@
                         <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-user"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Total Siswa</span>
-                            <span class="info-box-number">{{ 13 }}</span>
+                            <span class="info-box-text">Total Jenis Layanan</span>
+                            <span class="info-box-number">{{ $jenis->count() }}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -42,8 +42,8 @@
                         <span class="info-box-icon bg-success elevation-1"><i class="fas fa-database"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Total Kelas</span>
-                            <span class="info-box-number">{{ 12 }}</span>
+                            <span class="info-box-text">Total Layanan</span>
+                            <span class="info-box-number">{{ $layanan->count() }}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -55,8 +55,8 @@
                         <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-database"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Total Pelajaran</span>
-                            <span class="info-box-number">{{ 11 }}</span>
+                            <span class="info-box-text">Total Order</span>
+                            <span class="info-box-number">{{ $pesanan->count() }}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>

@@ -133,12 +133,13 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <a href="#/"
+                            <a href="{{ route('dashboard') }}"
                                 class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard </p>
                             </a>
                         </li>
+                            @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('pemilik'))
                         <li class="nav-header">MASTER PRODUK</li>
                             <li class="nav-item">
                                 <a href="{{ route('admin.jenis.index') }}"
@@ -160,6 +161,7 @@
                                     </p>
                                 </a>
                             </li>
+                            @endif
 
                             <li class="nav-header">MASTER ORDER </li>
                             <li class="nav-item">
@@ -180,10 +182,10 @@
                                     </p>
                                 </a>
                             </li>
-
+                            @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('pemilik'))
                             <li class="nav-header">MASTER PENGGUNA </li>
                             <li class="nav-item">
-                                <a href="#"
+                                <a href="{{ route('admin.customer.index') }}"
                                     class="nav-link">
                                     <i class="nav-icon fas fa-user"></i>
                                     <p>
@@ -193,7 +195,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#"
+                                <a href="{{ route('admin.pegawai.index') }}"
                                     class="nav-link">
                                     <i class="nav-icon fas fa-user"></i>
                                     <p>
@@ -202,6 +204,7 @@
                                     </p>
                                 </a>
                             </li>
+                            @endif
                     </ul>
                 </nav>
                 <!-- Sidebar Menu End -->

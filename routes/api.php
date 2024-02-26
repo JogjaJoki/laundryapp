@@ -33,6 +33,8 @@ Route::group(['middleware' => ['auth:sanctum']], function (){
     Route::get('/services/{id}', [App\Http\Controllers\Pelanggan\ServiceController::class, 'services']);
 
     Route::get('/jenis', [App\Http\Controllers\Pelanggan\JenisController::class, 'jenis']);
+
+    Route::get('/my-order', [App\Http\Controllers\Pelanggan\PesananController::class, 'myOrder']);
     
     Route::post('/make-order', [App\Http\Controllers\Pelanggan\PesananController::class, 'makeOrder']);
     Route::post('/layanan-list', [App\Http\Controllers\Pelanggan\PesananController::class, 'getlayananList']);

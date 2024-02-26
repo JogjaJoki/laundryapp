@@ -69,4 +69,11 @@ class PesananController extends Controller
         return response()
         ->json(['status' => 'success', 'message' => 'Pesanan Berhasil Dibuat, Silahkan Tunggu Penjemputan' ]);
     }
+
+    public function myOrder(){
+        $pesanan = Pesanan::where('pelanggan_id', Auth::user()->id)->get();
+
+        return response()
+        ->json(['status' => 'success', 'data' => $pesanan ]);
+    }
 }
